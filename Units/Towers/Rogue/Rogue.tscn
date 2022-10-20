@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Units/Towers/Rogue/Animations/Run.tres" type="Animation" id=1]
+[ext_resource path="res://Units/Towers/Rogue/Animations/SpecialAttack.tres" type="Animation" id=2]
+[ext_resource path="res://Units/Towers/Rogue/Animations/Throw.tres" type="Animation" id=3]
+[ext_resource path="res://Units/Towers/Rogue/Animations/Attack.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Towers/Rogue/Animations/CastSpell.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Towers/Rogue/Animations/Idle.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Towers/Rogue/Rogue.gd" type="Script" id=7]
+[ext_resource path="res://Units/Towers/Tower.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Units/Towers/Rogue/Assets/Rogue_Blue.png" type="Texture" id=9]
+[ext_resource path="res://Classes/Hitbox.gd" type="Script" id=10]
+[ext_resource path="res://Projectiles/Shuriken/Shuriken.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 66.5, 32 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 46, 17 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flip/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Flip/AttackHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Flip/AssassinateHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="Rogue" instance=ExtResource( 8 )]
+script = ExtResource( 7 )
+unit_type = "Rogue"
+damage_type = 1
+Shuriken = ExtResource( 11 )
+
+[node name="Sprite" parent="Flip" index="0"]
+position = Vector2( 0, -72 )
+texture = ExtResource( 9 )
+hframes = 8
+vframes = 13
+
+[node name="AttackHitbox" type="Area2D" parent="Flip" index="1"]
+visible = false
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/AttackHitbox" index="0"]
+position = Vector2( 12.5, -27 )
+shape = SubResource( 20 )
+disabled = true
+
+[node name="AttackRange" type="Area2D" parent="Flip" index="2"]
+visible = false
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/AttackRange" index="0"]
+position = Vector2( 13, -25 )
+shape = SubResource( 21 )
+disabled = true
+
+[node name="AssassinateHitbox" type="Area2D" parent="Flip" index="3"]
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/AssassinateHitbox" index="0"]
+position = Vector2( 12.5, -27 )
+shape = SubResource( 20 )
+disabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
+anims/Attack = ExtResource( 4 )
+anims/CastSpell = ExtResource( 5 )
+anims/Idle = ExtResource( 6 )
+anims/RESET = SubResource( 1 )
+anims/Run = ExtResource( 1 )
+anims/SpecialAttack = ExtResource( 2 )
+anims/Throw = ExtResource( 3 )
+
+[connection signal="body_entered" from="Flip/AttackRange" to="." method="_on_AttackRange_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/UIButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Themes/Theme48.tres" type="Theme" id=2]
+[ext_resource path="res://UI/LevelPaused/LevelPausedPopup.gd" type="Script" id=3]
+
+[node name="LevelPausedPopup" type="Popup"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 780.0
+margin_top = 325.0
+margin_right = 1140.0
+margin_bottom = 755.0
+custom_constants/separation = 10
+
+[node name="Title" type="Label" parent="CenterContainer/Options"]
+margin_right = 360.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 360, 100 )
+theme = ExtResource( 2 )
+text = "PAUSED"
+align = 1
+valign = 1
+
+[node name="Resume" parent="CenterContainer/Options" instance=ExtResource( 1 )]
+margin_top = 110.0
+margin_right = 360.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" parent="CenterContainer/Options/Resume" index="0"]
+text = "RESUME"
+
+[node name="LevelSelector" parent="CenterContainer/Options" instance=ExtResource( 1 )]
+margin_top = 220.0
+margin_right = 360.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" parent="CenterContainer/Options/LevelSelector" index="0"]
+text = "LEVEL SELECTOR"
+
+[node name="MainMenu" parent="CenterContainer/Options" instance=ExtResource( 1 )]
+margin_top = 330.0
+margin_right = 360.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" parent="CenterContainer/Options/MainMenu" index="0"]
+text = "MAIN MENU"
+
+[connection signal="about_to_show" from="." to="." method="_on_LevelPausedPopup_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_LevelPausedPopup_popup_hide"]
+[connection signal="button_up" from="CenterContainer/Options/Resume" to="." method="_on_Resume_button_up"]
+[connection signal="button_up" from="CenterContainer/Options/LevelSelector" to="." method="_on_LevelSelector_button_up"]
+[connection signal="button_up" from="CenterContainer/Options/MainMenu" to="." method="_on_MainMenu_button_up"]
+
+[editable path="CenterContainer/Options/Resume"]
+[editable path="CenterContainer/Options/LevelSelector"]
+[editable path="CenterContainer/Options/MainMenu"]

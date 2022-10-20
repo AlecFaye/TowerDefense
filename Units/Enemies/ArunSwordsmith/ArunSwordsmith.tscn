@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Enemies/ArunSwordsmith/ArunSwordsmith.gd" type="Script" id=2]
+[ext_resource path="res://Units/Enemies/ArunSwordsmith/Assets/ArunSwordsmith.png" type="Texture" id=3]
+[ext_resource path="res://Units/Enemies/Cultist/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/ArunSwordsmith/Animations/Run.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/Cultist/Animations/JumpToFall.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/ArunSwordsmith/Animations/Death.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Enemies/ArunSwordsmith/Animations/Hurt.tres" type="Animation" id=8]
+[ext_resource path="res://Units/Enemies/Cultist/Animations/Jump.tres" type="Animation" id=9]
+[ext_resource path="res://Units/Enemies/Cultist/Animations/Fall.tres" type="Animation" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17, 22 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="ArunSwordsmith" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 64.0
+gold_dropped = 64
+
+[node name="Health" parent="." index="0"]
+max_hp_amount = 64
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -48 )
+hframes = 8
+vframes = 9
+frame = 32
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( 0, -22 )
+shape = SubResource( 1 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Death = ExtResource( 7 )
+anims/Fall = ExtResource( 10 )
+anims/Hurt = ExtResource( 8 )
+anims/Idle = ExtResource( 4 )
+anims/Jump = ExtResource( 9 )
+anims/JumpToFall = ExtResource( 6 )
+anims/Move = ExtResource( 5 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -74.0
+margin_right = 24.0
+margin_bottom = -58.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -22 )

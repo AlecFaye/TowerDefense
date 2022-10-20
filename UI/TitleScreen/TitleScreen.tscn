@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/TitleScreen/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://Art/Background.png" type="Texture" id=2]
+[ext_resource path="res://Themes/Theme48.tres" type="Theme" id=3]
+[ext_resource path="res://UI/LevelSelector/LevelSelector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/UIButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/TutorialLevel/TutorialLevel.tscn" type="PackedScene" id=6]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1920, 1080 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+LevelSelector = ExtResource( 4 )
+TutorialLevel = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 957, 291 )
+scale = Vector2( 2.08165, 2.08165 )
+texture = ExtResource( 2 )
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -520.0
+margin_top = -56.0
+margin_right = -295.0
+margin_bottom = 104.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" parent="Options" instance=ExtResource( 5 )]
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="ResetLevel" parent="Options" instance=ExtResource( 5 )]
+visible = false
+margin_top = 90.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Label" parent="Options/ResetLevel" index="0"]
+text = "RESET"
+
+[node name="Quit" parent="Options" instance=ExtResource( 5 )]
+margin_top = 90.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Label" parent="Options/Quit" index="0"]
+text = "QUIT"
+
+[node name="Title" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 182.0
+margin_right = 674.0
+margin_bottom = 271.0
+theme = ExtResource( 3 )
+text = "Tower Defense Game
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Options/Play" to="." method="_on_Play_button_up"]
+[connection signal="button_up" from="Options/ResetLevel" to="." method="_on_ResetLevel_button_up"]
+[connection signal="button_up" from="Options/Quit" to="." method="_on_Quit_button_up"]
+
+[editable path="Options/ResetLevel"]
+[editable path="Options/Quit"]

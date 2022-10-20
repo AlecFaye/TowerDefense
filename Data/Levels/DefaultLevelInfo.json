@@ -1,0 +1,197 @@
+{
+	"Level 1": {
+		"FilePath": "Level_01",
+		"Name": "Level 1",
+		"LevelUnlocked": true,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 8.0, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 20.0, true]
+			],
+			"Wave 2": [
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 8.0, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 20.0, true]
+			],
+			"Wave 3": [
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 5.0, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 5.0, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 5.0, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 0.5, false],
+				["Zombie", 0, 20.0, true]
+			],
+			"Wave 4": [
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 8.0, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 8.0, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 20.0, true]
+			],
+			"Wave 5": [
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 1.5, false],
+				["Imp", 0, 8.0, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 8.0, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 20.0, true]
+			]
+		}
+	},
+	"Level 2": {
+		"FilePath": "Level_02",
+		"Name": "Level 2",
+		"LevelUnlocked": false,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 20.0, true]
+			],
+			"Wave 2": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 20.0, true]
+			]
+		}
+	},
+	"Level 3": {
+		"FilePath": "Level_03",
+		"Name": "Level 3",
+		"LevelUnlocked": false,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 20.0, true]
+			],
+			"Wave 2": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 20.0, true]
+			]
+		}
+	},
+	"Level 4": {
+		"FilePath": "Level_04",
+		"Name": "Level 4",
+		"LevelUnlocked": false,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Imp", 1, 0.5, false],
+				["Imp", 1, 0.5, false],
+				["Imp", 1, 0.5, false],
+				["Imp", 1, 20.0, true]
+			],
+			"Wave 2": [
+				["Imp", 1, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 1, 5.0, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 1, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 1, 20.0, true]
+			]
+		}
+	},
+	"Level 5": {
+		"FilePath": "Level_05",
+		"Name": "Level 5",
+		"LevelUnlocked": false,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0, true]
+			],
+			"Wave 2": [
+				["Imp", 0, 0.5, false],
+				["Imp", 1, 0.5, false],
+				["Imp", 1, 5.0, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 1, 0.5, false],
+				["Skeleton", 1, 0, true]
+			]
+		}
+	},
+	"Level 6": {
+		"FilePath": "Level_06",
+		"Name": "Level 6",
+		"LevelUnlocked": false,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 20.0, true]
+			],
+			"Wave 2": [
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 0.5, false],
+				["Imp", 0, 5.0, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 0.5, false],
+				["Skeleton", 0, 20.0, true]
+			]
+		}
+	}
+}

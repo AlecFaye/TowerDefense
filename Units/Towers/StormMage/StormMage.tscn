@@ -1,0 +1,32 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Units/Towers/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Towers/StormMage/StormMage.gd" type="Script" id=2]
+[ext_resource path="res://Units/Towers/StormMage/Assets/Idle/StormMage_Black_Idle_00.png" type="Texture" id=3]
+[ext_resource path="res://Units/Towers/StormMage/Animations/Attack.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Towers/StormMage/Animations/Idle.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Towers/StormMage/Animations/Hurt.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Towers/StormMage/Animations/Death.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Towers/StormMage/Animations/Run.tres" type="Animation" id=8]
+[ext_resource path="res://Units/Towers/StormMage/Animations/JumpToFall.tres" type="Animation" id=9]
+[ext_resource path="res://Units/Towers/StormMage/Animations/Jump.tres" type="Animation" id=10]
+[ext_resource path="res://Projectiles/LightningBolt/LightningBolt.tscn" type="PackedScene" id=11]
+
+[node name="StormMage" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+unit_type = "StormMage"
+LightningBolt = ExtResource( 11 )
+
+[node name="Sprite" parent="Flip" index="0"]
+position = Vector2( 0, -45 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
+anims/Attack = ExtResource( 4 )
+anims/Death = ExtResource( 7 )
+anims/Hurt = ExtResource( 6 )
+anims/Idle = ExtResource( 5 )
+anims/Jump = ExtResource( 10 )
+anims/JumpToFall = ExtResource( 9 )
+anims/Run = ExtResource( 8 )

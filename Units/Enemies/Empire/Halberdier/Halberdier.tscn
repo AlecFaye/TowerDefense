@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Units/Unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Halberdier.gd" type="Script" id=2]
+[ext_resource path="res://UI/Targeting/TargetingArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Assets/Halberdier.png" type="Texture" id=4]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Animations/Idle.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Animations/Move.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Animations/Attack.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Animations/Death.tres" type="Animation" id=8]
+[ext_resource path="res://Units/Enemies/Empire/Halberdier/Animations/Hurt.tres" type="Animation" id=9]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 16 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 21 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.5, 39 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 14, 31 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flip/HalberdAttack/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="Halberdier" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+basic_attack_damage = 3
+
+[node name="TargetingArea" parent="." index="0" instance=ExtResource( 3 )]
+
+[node name="UnitCollider" parent="." index="4"]
+position = Vector2( 0, -16 )
+shape = SubResource( 5 )
+
+[node name="UnitHitbox" parent="." index="5" groups=["UnitHitbox"]]
+
+[node name="Hitbox" parent="UnitHitbox" index="0"]
+position = Vector2( 0, -21 )
+shape = SubResource( 6 )
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 4 )
+offset = Vector2( 0, -33 )
+hframes = 10
+vframes = 6
+
+[node name="HalberdAttack" type="Area2D" parent="Flip" index="1"]
+collision_layer = 0
+collision_mask = 256
+
+[node name="Hitbox" type="CollisionShape2D" parent="Flip/HalberdAttack" index="0"]
+position = Vector2( 30.5, -34 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AttackRange" type="Area2D" parent="Flip" index="2"]
+collision_layer = 0
+collision_mask = 256
+
+[node name="Hitbox" type="CollisionShape2D" parent="Flip/AttackRange" index="0"]
+position = Vector2( 14, -31 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Idle"
+anims/Attack = ExtResource( 7 )
+anims/Death = ExtResource( 8 )
+anims/Hurt = ExtResource( 9 )
+anims/Idle = ExtResource( 5 )
+anims/Move = ExtResource( 6 )
+anims/RESET = SubResource( 3 )
+
+[node name="MovementTween" type="Tween" parent="." index="8"]
+
+[node name="Post" type="Position2D" parent="." index="9"]
+
+[connection signal="area_entered" from="Flip/HalberdAttack" to="." method="_on_HalberdAttack_area_entered"]

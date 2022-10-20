@@ -1,0 +1,40 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Units/Towers/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Towers/Alchemist/Alchemist.gd" type="Script" id=2]
+[ext_resource path="res://Units/Towers/Alchemist/Assets/BlueAttack_NoEffect/Alchemist_AttackNoEffects_Blue_00.png" type="Texture" id=3]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/Fall.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/GreenAttack.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/Hurt.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/BlueAttack.tres" type="Animation" id=8]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/Death.tres" type="Animation" id=9]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/Jump.tres" type="Animation" id=10]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/JumpToFall.tres" type="Animation" id=11]
+[ext_resource path="res://Units/Towers/Alchemist/Animations/RedAttack.tres" type="Animation" id=12]
+[ext_resource path="res://Projectiles/Flask/BlueFlask.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Projectiles/Flask/GreenFlask.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Projectiles/Flask/RedFlask.tscn" type="PackedScene" id=24]
+
+[node name="Alchemist" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+unit_type = "Alchemist"
+BlueFlask = ExtResource( 22 )
+GreenFlask = ExtResource( 23 )
+RedFlask = ExtResource( 24 )
+
+[node name="Sprite" parent="Flip" index="0"]
+position = Vector2( 0, -45 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
+anims/BlueAttack = ExtResource( 8 )
+anims/Death = ExtResource( 9 )
+anims/Fall = ExtResource( 5 )
+anims/GreenAttack = ExtResource( 6 )
+anims/Hurt = ExtResource( 7 )
+anims/Idle = ExtResource( 4 )
+anims/Jump = ExtResource( 10 )
+anims/JumpToFall = ExtResource( 11 )
+anims/RedAttack = ExtResource( 12 )

@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Enemies/Warlock/Warlock.gd" type="Script" id=2]
+[ext_resource path="res://Units/Enemies/Warlock/Assets/Warlock.png" type="Texture" id=3]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Run.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Idle.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Death.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Attack.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Hurt.tres" type="Animation" id=8]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Castloop.tres" type="Animation" id=9]
+[ext_resource path="res://Units/Enemies/Warlock/Animations/Spellcast.tres" type="Animation" id=10]
+[ext_resource path="res://UI/Targeting/TargetingArea.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 21, 22.5 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 64 ]
+}
+
+[node name="Warlock" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+unit_type = "Warlock"
+speed = 36.0
+attack_cooldown_time = 5.0
+gold_dropped = 48
+target_range = 5
+heal_amount = 12
+
+[node name="Health" parent="." index="0"]
+max_hp_amount = 96
+
+[node name="AttackCooldownTimer" parent="Timers" index="1"]
+one_shot = true
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -38 )
+hframes = 8
+vframes = 10
+frame = 64
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( 0, -22.5 )
+shape = SubResource( 3 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Attack = ExtResource( 7 )
+anims/Castloop = ExtResource( 9 )
+anims/Death = ExtResource( 6 )
+anims/Hurt = ExtResource( 8 )
+anims/Idle = ExtResource( 5 )
+anims/Move = ExtResource( 4 )
+anims/RESET = SubResource( 2 )
+anims/Spellcast = ExtResource( 10 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -81.0
+margin_right = 24.0
+margin_bottom = -65.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -22 )
+
+[node name="TargetingArea" parent="." index="10" instance=ExtResource( 11 )]
+
+[connection signal="timeout" from="Timers/AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

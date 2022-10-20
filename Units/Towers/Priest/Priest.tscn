@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Units/Towers/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Towers/Priest/Assets/Idle/Priest_Idle_0.png" type="Texture" id=2]
+[ext_resource path="res://Units/Towers/Priest/Animations/Attack.tres" type="Animation" id=3]
+[ext_resource path="res://Units/Towers/Priest/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Projectiles/SunBolt/SunBolt.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Units/Towers/Priest/Animations/Heal.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Towers/Priest/Priest.gd" type="Script" id=11]
+[ext_resource path="res://Effects/SlowAreaParticles/SlowAreaParticles.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flip/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+
+[node name="Priest" instance=ExtResource( 1 )]
+script = ExtResource( 11 )
+unit_type = "Priest"
+damage_type = 2
+speed_debuff = 0.3
+num_of_sunbolts = 8
+SlowAreaParticles = ExtResource( 13 )
+SunBolt = ExtResource( 5 )
+
+[node name="Sprite" parent="Flip" index="0"]
+position = Vector2( 0, -45 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
+anims/Attack = ExtResource( 3 )
+anims/Idle = ExtResource( 4 )
+anims/RESET = SubResource( 1 )
+anims/Slow = ExtResource( 6 )
+
+[connection signal="body_exited" from="TargetingArea" to="." method="_on_TargetingArea_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

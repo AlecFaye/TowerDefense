@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Units/Enemies/Vampire/Assets/Vampire_New.png" type="Texture" id=1]
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Units/Enemies/Vampire/Vampire.gd" type="Script" id=3]
+[ext_resource path="res://Units/Enemies/Vampire/Animations/Run.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/Vampire/Animations/Death.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/Vampire/Animations/Idle.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/Vampire/Animations/Hurt.tres" type="Animation" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 21 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="Vampire" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+speed = 48.0
+gold_dropped = 128
+regen_time = 1.0
+regen_amount = 4
+
+[node name="Health" parent="." index="0"]
+max_hp_amount = 128
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -34 )
+hframes = 6
+vframes = 14
+frame = 6
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( -3, -21 )
+shape = SubResource( 1 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Death = ExtResource( 5 )
+anims/Hurt = ExtResource( 7 )
+anims/Idle = ExtResource( 6 )
+anims/Move = ExtResource( 4 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -73.0
+margin_right = 24.0
+margin_bottom = -57.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -24 )

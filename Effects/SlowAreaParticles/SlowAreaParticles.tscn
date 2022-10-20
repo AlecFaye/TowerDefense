@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 16, 32, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 1.0
+color = Color( 0.235294, 0.768627, 0.87451, 1 )
+
+[node name="SlowAreaParticles" type="Particles2D" groups=["SlowParticles"]]
+amount = 25
+preprocess = 10.0
+randomness = 1.0
+process_material = SubResource( 1 )

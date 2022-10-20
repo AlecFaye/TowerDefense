@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Units/Enemies/Abomination/Assets/Abomination.png" type="Texture" id=1]
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Units/Enemies/Abomination/Abomination.gd" type="Script" id=3]
+[ext_resource path="res://Units/Enemies/Abomination/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/Abomination/Animations/Attack.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/Abomination/Animations/Walk.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/Abomination/Animations/Hurt.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Enemies/Abomination/Animations/Death.tres" type="Animation" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 45.5, 43.5 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="Abomination" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+speed = 24.0
+gold_dropped = 256
+
+[node name="Health" parent="." index="0"]
+max_hp_amount = 512
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -87 )
+hframes = 6
+vframes = 7
+frame = 20
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( -7.5, -43.5 )
+shape = SubResource( 1 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Attack = ExtResource( 5 )
+anims/Death = ExtResource( 8 )
+anims/Hurt = ExtResource( 7 )
+anims/Idle = ExtResource( 4 )
+anims/Move = ExtResource( 6 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -117.0
+margin_right = 24.0
+margin_bottom = -101.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -51 )

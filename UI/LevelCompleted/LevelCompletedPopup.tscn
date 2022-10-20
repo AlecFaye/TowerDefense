@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/LevelCompleted/LevelCompletedPopup.gd" type="Script" id=1]
+[ext_resource path="res://UI/UIButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Themes/Theme48.tres" type="Theme" id=3]
+
+[node name="LevelCompletedPopup" type="Popup"]
+pause_mode = 2
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 780.0
+margin_top = 367.0
+margin_right = 1140.0
+margin_bottom = 712.0
+custom_constants/separation = 10
+
+[node name="Title" type="Label" parent="CenterContainer/Options"]
+margin_right = 360.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 360, 125 )
+theme = ExtResource( 3 )
+text = "LEVEL
+COMPLETED"
+align = 1
+
+[node name="NextLevel" parent="CenterContainer/Options" instance=ExtResource( 2 )]
+margin_top = 135.0
+margin_right = 360.0
+margin_bottom = 235.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" parent="CenterContainer/Options/NextLevel" index="0"]
+text = "NEXT LEVEL"
+
+[node name="MainMenu" parent="CenterContainer/Options" instance=ExtResource( 2 )]
+margin_top = 245.0
+margin_right = 360.0
+margin_bottom = 345.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" parent="CenterContainer/Options/MainMenu" index="0"]
+text = "MAIN MENU"
+
+[connection signal="button_up" from="CenterContainer/Options/NextLevel" to="." method="_on_NextLevel_button_up"]
+[connection signal="button_up" from="CenterContainer/Options/MainMenu" to="." method="_on_MainMenu_button_up"]
+
+[editable path="CenterContainer/Options/NextLevel"]
+[editable path="CenterContainer/Options/MainMenu"]

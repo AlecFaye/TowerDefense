@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/DOT/BaseDOT.gd" type="Script" id=1]
+
+[node name="BaseDOT" type="Node"]
+script = ExtResource( 1 )
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[node name="TickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_DurationTimer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]

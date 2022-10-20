@@ -1,0 +1,151 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/Assets/PrototypeHero_noSword.png" type="Texture" id=2]
+[ext_resource path="res://Player/Animations/Hurt.tres" type="Animation" id=3]
+[ext_resource path="res://Player/Animations/RunStop.tres" type="Animation" id=4]
+[ext_resource path="res://Player/Animations/Run.tres" type="Animation" id=5]
+[ext_resource path="res://Player/Animations/RunStart.tres" type="Animation" id=6]
+[ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=7]
+[ext_resource path="res://Classes/Hurtbox.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Hurt"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "RunStart"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "RunStop"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
+states/Hurt/node = SubResource( 20 )
+states/Hurt/position = Vector2( -237.768, -16 )
+states/Idle/node = SubResource( 9 )
+states/Idle/position = Vector2( -27, -16 )
+states/Run/node = SubResource( 10 )
+states/Run/position = Vector2( 181, 112 )
+states/RunStart/node = SubResource( 11 )
+states/RunStart/position = Vector2( 181, -16 )
+states/RunStop/node = SubResource( 12 )
+states/RunStop/position = Vector2( -27, 112 )
+transitions = [ "Idle", "RunStart", SubResource( 13 ), "RunStart", "Run", SubResource( 14 ), "Run", "RunStop", SubResource( 15 ), "RunStop", "Idle", SubResource( 16 ), "Hurt", "Idle", SubResource( 22 ), "Idle", "Hurt", SubResource( 23 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -499.768, -87.2898 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 100.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 8.0
+height = 26.6667
+
+[sub_resource type="CapsuleShape2D" id=24]
+radius = 8.0
+height = 26.6667
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
+scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 1 )
+speed = 250
+
+[node name="HurtResetTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hurt = ExtResource( 3 )
+anims/Idle = ExtResource( 7 )
+anims/RESET = SubResource( 6 )
+anims/Run = ExtResource( 5 )
+anims/RunStart = ExtResource( 6 )
+anims/RunStop = ExtResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 17 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 18 )
+
+[node name="Flip" type="Node2D" parent="."]
+
+[node name="CoinAttraction" type="Area2D" parent="Flip" groups=["CoinAttractor"]]
+visible = false
+position = Vector2( 0, -23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/CoinAttraction"]
+shape = SubResource( 4 )
+
+[node name="CoinGrab" type="Area2D" parent="Flip" groups=["CoinGrabber"]]
+visible = false
+position = Vector2( 0, -23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/CoinGrab"]
+position = Vector2( 0, 3 )
+shape = SubResource( 5 )
+
+[node name="Hurtbox" type="Area2D" parent="Flip" groups=["PlayerHitbox"]]
+collision_mask = 256
+script = ExtResource( 8 )
+coll_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Hurtbox"]
+position = Vector2( 0, -20 )
+shape = SubResource( 24 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="Flip"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -38 )
+hframes = 8
+vframes = 15
+
+[connection signal="timeout" from="HurtResetTimer" to="." method="_on_HurtResetTimer_timeout"]

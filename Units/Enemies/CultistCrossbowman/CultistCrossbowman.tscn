@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Enemies/CultistCrossbowman/Assets/CultistCrossbow_RED.png" type="Texture" id=2]
+[ext_resource path="res://Units/Enemies/CultistCrossbowman/Animations/Walk.tres" type="Animation" id=3]
+[ext_resource path="res://Units/Enemies/CultistCrossbowman/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/CultistCrossbowman/Animations/Hurt.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/CultistCrossbowman/Animations/Death.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/CultistCrossbowman/CultistCrossbowman.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13, 22.5 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="CultistCrossbowman" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -30 )
+hframes = 8
+vframes = 8
+frame = 8
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( 0, -22.5 )
+shape = SubResource( 1 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Death = ExtResource( 6 )
+anims/Hurt = ExtResource( 5 )
+anims/Idle = ExtResource( 4 )
+anims/Move = ExtResource( 3 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -71.0
+margin_right = 24.0
+margin_bottom = -55.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -23 )

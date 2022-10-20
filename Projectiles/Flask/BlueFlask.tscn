@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Projectiles/Trajectory/Trajectory.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Projectiles/Flask/Flask_Blue.png" type="Texture" id=2]
+[ext_resource path="res://Effects/FlaskExplosion/ExplosionBlue.tscn" type="PackedScene" id=3]
+
+[node name="BlueFlask" instance=ExtResource( 1 )]
+collision_layer = 0
+collision_mask = 0
+max_speed = 500.0
+AfterEffect = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2

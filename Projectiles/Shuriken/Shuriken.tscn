@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Projectiles/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Projectiles/Shuriken/Shuriken.gd" type="Script" id=2]
+[ext_resource path="res://Projectiles/Shuriken/Shuriken.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Shuriken"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[node name="Shuriken" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 250.0
+projectile_type = "Persist"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" parent="Sprite/Hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Shuriken"
+playback_speed = 1.5
+anims/RESET = SubResource( 2 )
+anims/Shuriken = SubResource( 3 )
+
+[node name="LifetimeTimer" parent="." index="2"]
+wait_time = 12.0
+autostart = true

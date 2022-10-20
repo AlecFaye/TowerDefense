@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Enemies/Paladin/Paladin.gd" type="Script" id=2]
+[ext_resource path="res://Units/Enemies/Paladin/Animations/LanceDownGallop.tres" type="Animation" id=3]
+[ext_resource path="res://Units/Enemies/Paladin/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/Paladin/Assets/LanceDownGallop/Paladin_Red_LanceDownGallop_1.png" type="Texture" id=5]
+[ext_resource path="res://Units/Enemies/Paladin/Animations/Hurt.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/Paladin/Animations/Death.tres" type="Animation" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28.5, 30.5 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="Paladin" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+unit_type = "Paladin"
+speed = 500.0
+gold_dropped = 90
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 5 )
+offset = Vector2( 0, -62 )
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( 2.5, -30.5 )
+shape = SubResource( 1 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Death = ExtResource( 7 )
+anims/Hurt = ExtResource( 6 )
+anims/Idle = ExtResource( 4 )
+anims/Move = ExtResource( 3 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -95.0
+margin_right = 24.0
+margin_bottom = -79.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -36 )

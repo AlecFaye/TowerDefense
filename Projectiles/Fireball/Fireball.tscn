@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Projectiles/Fireball/Fireball.png" type="Texture" id=1]
+[ext_resource path="res://Projectiles/Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Projectiles/Fireball/Fireball.gd" type="Script" id=3]
+[ext_resource path="res://Projectiles/Fireball/Fireball.tres" type="Animation" id=4]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 6.00309
+height = 9.99381
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Fireball" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+speed = 300.0
+steer_force = 75.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" parent="Sprite/Hitbox" index="0"]
+position = Vector2( 1, 0 )
+rotation = 1.56956
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Fireball"
+anims/Fireball = ExtResource( 4 )
+anims/RESET = SubResource( 2 )
+
+[node name="LifetimeTimer" parent="." index="2"]
+wait_time = 10.0
+one_shot = true

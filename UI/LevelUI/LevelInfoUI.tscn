@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/UI/Lives.png" type="Texture" id=1]
+[ext_resource path="res://Art/UI/BannerBrown.png" type="Texture" id=2]
+[ext_resource path="res://Art/UI/Skull.png" type="Texture" id=3]
+[ext_resource path="res://Art/UI/Gold.png" type="Texture" id=4]
+[ext_resource path="res://UI/LevelUI/LevelInfoUI.gd" type="Script" id=5]
+[ext_resource path="res://Themes/Theme16.tres" type="Theme" id=6]
+
+[node name="LevelInfoUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1920, 1080 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Banner" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -215.0
+margin_top = 60.0
+margin_right = -70.0
+margin_bottom = 202.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Banner"]
+margin_left = 21.0
+margin_top = 29.0
+margin_right = 124.0
+margin_bottom = 113.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Banner/MarginContainer"]
+margin_right = 103.0
+margin_bottom = 84.0
+
+[node name="GoldContainer" type="HBoxContainer" parent="Banner/MarginContainer/VBoxContainer"]
+margin_right = 103.0
+margin_bottom = 28.0
+
+[node name="GoldIcon" type="TextureRect" parent="Banner/MarginContainer/VBoxContainer/GoldContainer"]
+margin_right = 32.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 32, 28 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="GoldAmount" type="Label" parent="Banner/MarginContainer/VBoxContainer/GoldContainer"]
+unique_name_in_owner = true
+margin_left = 36.0
+margin_top = 6.0
+margin_right = 101.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 65, 0 )
+theme = ExtResource( 6 )
+text = "9999999"
+clip_text = true
+
+[node name="LivesContainer" type="HBoxContainer" parent="Banner/MarginContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 103.0
+margin_bottom = 52.0
+
+[node name="LivesIcon" type="TextureRect" parent="Banner/MarginContainer/VBoxContainer/LivesContainer"]
+margin_right = 32.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 32, 20 )
+texture = ExtResource( 1 )
+stretch_mode = 6
+
+[node name="LivesAmount" type="Label" parent="Banner/MarginContainer/VBoxContainer/LivesContainer"]
+unique_name_in_owner = true
+margin_left = 36.0
+margin_top = 2.0
+margin_right = 72.0
+margin_bottom = 17.0
+theme = ExtResource( 6 )
+text = "9999"
+
+[node name="WavesContainer" type="HBoxContainer" parent="Banner/MarginContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 103.0
+margin_bottom = 84.0
+
+[node name="WavesIcon" type="TextureRect" parent="Banner/MarginContainer/VBoxContainer/WavesContainer"]
+margin_right = 32.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 32, 28 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="WavesAmount" type="Label" parent="Banner/MarginContainer/VBoxContainer/WavesContainer"]
+unique_name_in_owner = true
+margin_left = 36.0
+margin_top = 6.0
+margin_right = 81.0
+margin_bottom = 21.0
+theme = ExtResource( 6 )
+text = "1/999"

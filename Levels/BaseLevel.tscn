@@ -1,0 +1,172 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Levels/BaseLevel.gd" type="Script" id=1]
+[ext_resource path="res://Environment/TowerDefenseIsometric/Details.tres" type="TileSet" id=2]
+[ext_resource path="res://Environment/TowerDefenseIsometric/Environment.tres" type="TileSet" id=3]
+[ext_resource path="res://UI/LevelCompleted/LevelCompletedPopup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/UnitSelector/UnitSelector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/UnitSelector/HoveredTile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment/TowerDefenseIsometric/Environment.gd" type="Script" id=7]
+[ext_resource path="res://Environment/TowerDefenseIsometric/Details.gd" type="Script" id=8]
+[ext_resource path="res://UI/TowerInfoPopup/TowerInfoPopup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Health/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/LevelFailed/LevelFailedPopup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/UIButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/LevelUI/LevelInfoUI.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Effects/Portal/Portal.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UI/LevelUI/Gold.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/LevelPaused/LevelPausedPopup.tscn" type="PackedScene" id=16]
+[ext_resource path="res://CatPlayer/CatPlayer.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Environment/CastleIsometric/CastleTiles.tres" type="TileSet" id=18]
+[ext_resource path="res://Levels/LevelPath.gd" type="Script" id=19]
+[ext_resource path="res://Environment/CastleIsometric/Castle.gd" type="Script" id=20]
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+starting_gold = 150
+max_lives = 20
+SpawnPortal = ExtResource( 14 )
+
+[node name="Health" parent="." instance=ExtResource( 10 )]
+max_hp_amount = 3
+
+[node name="Gold" parent="." instance=ExtResource( 15 )]
+
+[node name="Tilesets" type="YSort" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Environment" type="TileMap" parent="Tilesets"]
+mode = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 64 )
+cell_y_sort = true
+format = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Details" type="TileMap" parent="Tilesets"]
+mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 64 )
+cell_y_sort = true
+format = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CastleSort" type="YSort" parent="."]
+
+[node name="Castle" type="TileMap" parent="CastleSort"]
+scale = Vector2( 0.582, 0.582 )
+mode = 1
+tile_set = ExtResource( 18 )
+cell_size = Vector2( 220, 110 )
+format = 1
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+
+[node name="MainYSort" type="YSort" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HoverTileContainer" type="YSort" parent="MainYSort"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HoveredTile" parent="MainYSort/HoverTileContainer" instance=ExtResource( 6 )]
+visible = false
+
+[node name="TowerContainer" type="YSort" parent="MainYSort"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnemyContainer" type="YSort" parent="MainYSort"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CatPlayer" parent="MainYSort" instance=ExtResource( 17 )]
+unique_name_in_owner = true
+position = Vector2( 1024, 512 )
+
+[node name="EnemyRoutes" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EffectRoutes" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MapPaths" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LevelPath1" type="Node2D" parent="MapPaths"]
+script = ExtResource( 19 )
+
+[node name="1" type="Position2D" parent="MapPaths/LevelPath1"]
+
+[node name="LevelGUI" type="CanvasLayer" parent="."]
+
+[node name="UnitSelector" parent="LevelGUI" instance=ExtResource( 5 )]
+
+[node name="OtherGUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LevelFailedPopup" parent="OtherGUI" instance=ExtResource( 11 )]
+unique_name_in_owner = true
+
+[node name="LevelCompletedPopup" parent="OtherGUI" instance=ExtResource( 4 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="LevelPausedPopup" parent="OtherGUI" instance=ExtResource( 16 )]
+unique_name_in_owner = true
+
+[node name="TowerInfoPopup" parent="OtherGUI" instance=ExtResource( 9 )]
+unique_name_in_owner = true
+
+[node name="LevelInfoUI" parent="." instance=ExtResource( 13 )]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="StartWaveButton" parent="." instance=ExtResource( 12 )]
+unique_name_in_owner = true
+
+[node name="Label" parent="StartWaveButton" index="0"]
+text = "START"
+
+[node name="PauseButton" parent="." instance=ExtResource( 12 )]
+margin_left = 1664.0
+margin_top = 960.0
+margin_right = 1889.0
+margin_bottom = 1035.0
+
+[node name="Label" parent="PauseButton" index="0"]
+text = "PAUSE"
+
+[connection signal="hp_depleted" from="Health" to="." method="_fail_level"]
+[connection signal="unpause" from="OtherGUI/LevelPausedPopup" to="." method="_on_LevelPausedPopup_unpause"]
+[connection signal="popup_hide" from="OtherGUI/TowerInfoPopup" to="." method="_on_TowerInfoPopup_popup_hide"]
+[connection signal="button_up" from="StartWaveButton" to="." method="_on_StartWaveButton_button_up"]
+[connection signal="button_up" from="PauseButton" to="." method="_on_PauseButton_button_up"]
+
+[editable path="StartWaveButton"]
+[editable path="PauseButton"]

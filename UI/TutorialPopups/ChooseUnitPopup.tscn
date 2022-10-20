@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Themes/Theme24.tres" type="Theme" id=1]
+
+[node name="ChooseUnitPopup" type="AcceptDialog"]
+visible = true
+margin_left = 769.0
+margin_top = 556.0
+margin_right = 1217.0
+margin_bottom = 705.0
+theme = ExtResource( 1 )
+popup_exclusive = true
+window_title = "Choosing a Unit Tutorial"
+resizable = true
+dialog_autowrap = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -44.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_top = 25.0
+margin_right = 432.0
+margin_bottom = 72.0
+text = "Choose a unit by clicking on the unit button."
+align = 1
+valign = 1
+autowrap = true

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Environment/DemonWoods/Assets/parallax-demon-woods-bg.png" type="Texture" id=1]
+[ext_resource path="res://Environment/DemonWoods/Assets/parallax-demon-woods-close-trees.png" type="Texture" id=2]
+[ext_resource path="res://Environment/DemonWoods/Assets/parallax-demon-woods-far-trees.png" type="Texture" id=3]
+[ext_resource path="res://Environment/DemonWoods/Assets/parallax-demon-woods-mid-trees.png" type="Texture" id=4]
+
+[node name="DemonWoodsBackground" type="ParallaxBackground"]
+
+[node name="Background" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 1308, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background"]
+position = Vector2( 7.51019e-06, 0 )
+scale = Vector2( 2.725, 2.21 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Far" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1308, 0 )
+
+[node name="Sprite" type="Sprite" parent="Far"]
+scale = Vector2( 2.21, 2.21 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Mid" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1308, 0 )
+
+[node name="Sprite" type="Sprite" parent="Mid"]
+scale = Vector2( 2.21, 2.21 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Close" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 1308, 0 )
+
+[node name="Sprite" type="Sprite" parent="Close"]
+scale = Vector2( 2.21, 2.21 )
+texture = ExtResource( 2 )
+centered = false

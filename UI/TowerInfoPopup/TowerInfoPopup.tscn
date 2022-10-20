@@ -1,0 +1,580 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Effects/UpgradeParticles/UpgradeParticles.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/TowerInfoPopup/TowerInfoPopup.gd" type="Script" id=2]
+[ext_resource path="res://Themes/Theme16.tres" type="Theme" id=3]
+[ext_resource path="res://UI/AnimatedIcons/FireMageIcon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/UI/Upgrade.png" type="Texture" id=5]
+[ext_resource path="res://UI/TowerInfoPopup/AbilityContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/TowerInfoPopup/BookTab.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/Book/RightPage.png" type="Texture" id=8]
+[ext_resource path="res://Art/Book/Header_1.png" type="Texture" id=9]
+[ext_resource path="res://Art/UI/ButtonBook.png" type="Texture" id=10]
+[ext_resource path="res://Art/UI/Gold.png" type="Texture" id=11]
+[ext_resource path="res://Art/Book/LeftPage.png" type="Texture" id=12]
+[ext_resource path="res://Art/Book/Header_2.png" type="Texture" id=13]
+[ext_resource path="res://Art/UI/Ability.png" type="Texture" id=14]
+[ext_resource path="res://Art/UI/Stats.png" type="Texture" id=15]
+[ext_resource path="res://Art/UI/BookmarkCross.png" type="Texture" id=17]
+[ext_resource path="res://Themes/Theme24.tres" type="Theme" id=18]
+[ext_resource path="res://Art/Book/CloseButton.png" type="Texture" id=19]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.294118 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[node name="TowerInfoPopup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+AbilityContainer = ExtResource( 6 )
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeParticles" parent="." instance=ExtResource( 1 )]
+position = Vector2( 960, 512 )
+scale = Vector2( 4, 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -192.5
+margin_right = 320.0
+margin_bottom = 192.5
+
+[node name="Pages" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 640.0
+margin_bottom = 385.0
+custom_constants/separation = 0
+
+[node name="LeftPage_1" type="TextureRect" parent="MarginContainer/Pages"]
+margin_right = 320.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 320, 0 )
+texture = ExtResource( 12 )
+stretch_mode = 5
+
+[node name="CrossBookmark" type="TextureRect" parent="MarginContainer/Pages/LeftPage_1"]
+margin_left = 58.0
+margin_top = -32.0
+margin_right = 90.0
+margin_bottom = 34.0
+texture = ExtResource( 17 )
+stretch_mode = 5
+
+[node name="LeftPageMarginContainer" type="MarginContainer" parent="MarginContainer/Pages/LeftPage_1"]
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 272.0
+margin_bottom = 327.0
+
+[node name="LeftPageContainer" type="VBoxContainer" parent="MarginContainer/Pages/LeftPage_1/LeftPageMarginContainer"]
+margin_right = 224.0
+margin_bottom = 303.0
+custom_constants/separation = 0
+
+[node name="TowerName" type="Label" parent="MarginContainer/Pages/LeftPage_1/LeftPageMarginContainer/LeftPageContainer"]
+unique_name_in_owner = true
+margin_right = 224.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+theme = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "FIRE MAGE"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="LineHeaderControl" type="TextureRect" parent="MarginContainer/Pages/LeftPage_1/LeftPageMarginContainer/LeftPageContainer"]
+margin_top = 24.0
+margin_right = 224.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 40 )
+texture = ExtResource( 9 )
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimatedIconControl" type="Control" parent="MarginContainer/Pages/LeftPage_1/LeftPageMarginContainer/LeftPageContainer"]
+unique_name_in_owner = true
+margin_top = 64.0
+margin_right = 224.0
+margin_bottom = 64.0
+
+[node name="FireMageIcon" parent="MarginContainer/Pages/LeftPage_1/LeftPageMarginContainer/LeftPageContainer/AnimatedIconControl" instance=ExtResource( 4 )]
+position = Vector2( 112, 200 )
+scale = Vector2( 3, 3 )
+
+[node name="RightPage_1" type="TextureRect" parent="MarginContainer/Pages"]
+margin_left = 320.0
+margin_right = 640.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 320, 0 )
+texture = ExtResource( 8 )
+stretch_mode = 5
+
+[node name="RightPageMarginContainer" type="MarginContainer" parent="MarginContainer/Pages/RightPage_1"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 256.0
+margin_bottom = 324.0
+
+[node name="RightPageContainer" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer"]
+margin_right = 196.0
+margin_bottom = 300.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_right = 196.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+theme = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stats"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="LineHeaderControl" type="TextureRect" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 24.0
+margin_right = 196.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 40 )
+texture = ExtResource( 9 )
+stretch_mode = 6
+
+[node name="Divider1" type="Control" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 64.0
+margin_right = 196.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="RangeContainer" type="HBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 80.0
+margin_right = 196.0
+margin_bottom = 95.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RangeText" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/RangeContainer"]
+margin_right = 96.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 96, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "RANGE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RangeAmount" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/RangeContainer"]
+unique_name_in_owner = true
+margin_left = 96.0
+margin_right = 192.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 96, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9999"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Divider2" type="Control" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 95.0
+margin_right = 196.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="TargeTypeContainer" type="HBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 105.0
+margin_right = 196.0
+margin_bottom = 120.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TargetTypeText" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/TargeTypeContainer"]
+margin_right = 96.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 96, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "TARGET"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TargetType" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/TargeTypeContainer"]
+unique_name_in_owner = true
+margin_left = 96.0
+margin_right = 192.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 96, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "FIRST"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Divider3" type="Control" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 120.0
+margin_right = 196.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="DamageTypeContainer" type="HBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 130.0
+margin_right = 196.0
+margin_bottom = 145.0
+
+[node name="DamageTypeText" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/DamageTypeContainer"]
+margin_right = 96.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 96, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "TYPE"
+
+[node name="DamageType" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/DamageTypeContainer"]
+unique_name_in_owner = true
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 96, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "MAGICAL"
+align = 2
+
+[node name="Divider4" type="Control" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 145.0
+margin_right = 196.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="PurchasesContainer" type="HBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer"]
+margin_top = 225.0
+margin_right = 196.0
+margin_bottom = 276.0
+alignment = 1
+
+[node name="SellContainer" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer"]
+margin_right = 96.0
+margin_bottom = 51.0
+
+[node name="ButtonBook" type="TextureRect" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/SellContainer"]
+margin_right = 96.0
+margin_bottom = 32.0
+texture = ExtResource( 10 )
+
+[node name="Gold" type="TextureRect" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/SellContainer/ButtonBook"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -7.5
+margin_right = 10.0
+margin_bottom = 8.5
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 11 )
+stretch_mode = 5
+
+[node name="SellButton" type="Button" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/SellContainer/ButtonBook"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 32 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+
+[node name="SellAmount" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/SellContainer"]
+unique_name_in_owner = true
+margin_top = 36.0
+margin_right = 96.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 65, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9999"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeContainer" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 51.0
+
+[node name="ButtonBook" type="TextureRect" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/UpgradeContainer"]
+margin_right = 96.0
+margin_bottom = 32.0
+texture = ExtResource( 10 )
+
+[node name="Upgrade" type="TextureRect" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/UpgradeContainer/ButtonBook"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+texture = ExtResource( 5 )
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/UpgradeContainer/ButtonBook"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 32 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+flat = true
+
+[node name="UpgradeAmount" type="Label" parent="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/UpgradeContainer"]
+unique_name_in_owner = true
+margin_top = 36.0
+margin_right = 96.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 65, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9999"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightPage_2" type="TextureRect" parent="MarginContainer/Pages"]
+visible = false
+margin_left = 640.0
+margin_right = 960.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 320, 0 )
+texture = ExtResource( 8 )
+stretch_mode = 5
+
+[node name="RightPageMarginContainer" type="MarginContainer" parent="MarginContainer/Pages/RightPage_2"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 260.0
+margin_bottom = 324.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RightPageContainer" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer"]
+margin_right = 196.0
+margin_bottom = 300.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer"]
+margin_right = 196.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+theme = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ABILITIES"
+align = 1
+valign = 1
+
+[node name="LineHeaderControl" type="TextureRect" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer"]
+margin_top = 24.0
+margin_right = 196.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 40 )
+texture = ExtResource( 9 )
+stretch_mode = 6
+
+[node name="Divider1" type="Control" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer"]
+margin_top = 64.0
+margin_right = 196.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer"]
+margin_top = 80.0
+margin_right = 196.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 0, 15 )
+custom_constants/separation = 0
+alignment = 1
+
+[node name="AbilityNameContainer" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/TitleContainer"]
+margin_right = 98.0
+margin_bottom = 35.0
+custom_constants/separation = 0
+
+[node name="AbilityNameTitle" type="Label" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/TitleContainer/AbilityNameContainer"]
+margin_right = 98.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 98, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ABILITY"
+align = 1
+
+[node name="Header" type="TextureRect" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/TitleContainer/AbilityNameContainer"]
+margin_top = 15.0
+margin_right = 98.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 20 )
+texture = ExtResource( 13 )
+stretch_mode = 6
+
+[node name="AbilityLevelContainer" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/TitleContainer"]
+margin_left = 98.0
+margin_right = 196.0
+margin_bottom = 35.0
+custom_constants/separation = 0
+
+[node name="LevelTitle" type="Label" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/TitleContainer/AbilityLevelContainer"]
+margin_right = 98.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 98, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "LEVEL"
+align = 1
+
+[node name="Header" type="TextureRect" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/TitleContainer/AbilityLevelContainer"]
+margin_top = 15.0
+margin_right = 98.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 20 )
+texture = ExtResource( 13 )
+stretch_mode = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer"]
+margin_top = 115.0
+margin_right = 196.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 0, 150 )
+scroll_horizontal_enabled = false
+
+[node name="Abilities" type="VBoxContainer" parent="MarginContainer/Pages/RightPage_2/RightPageMarginContainer/RightPageContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_constants/separation = 5
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_left = 1263.0
+margin_top = 324.0
+margin_right = 1283.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 20, 20 )
+rect_scale = Vector2( 1.5, 1.5 )
+theme = ExtResource( 3 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 19 )
+expand = true
+
+[node name="TabContainer" type="HBoxContainer" parent="."]
+margin_left = 1000.0
+margin_top = 308.0
+margin_right = 1080.0
+margin_bottom = 348.0
+custom_constants/separation = 0
+
+[node name="StatsTab" parent="TabContainer" instance=ExtResource( 7 )]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 20 )
+
+[node name="StatsIcon" type="TextureRect" parent="TabContainer/StatsTab"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -13.0
+margin_right = 16.0
+margin_bottom = 19.0
+texture = ExtResource( 15 )
+stretch_mode = 6
+
+[node name="AbilityTab" parent="TabContainer" instance=ExtResource( 7 )]
+margin_left = 40.0
+margin_right = 80.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 20 )
+
+[node name="AbilityIcon" type="TextureRect" parent="TabContainer/AbilityTab"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -13.0
+margin_right = 16.0
+margin_bottom = 19.0
+texture = ExtResource( 14 )
+stretch_mode = 6
+
+[connection signal="about_to_show" from="." to="." method="_on_TowerInfoPopup_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_TowerInfoPopup_popup_hide"]
+[connection signal="button_up" from="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/SellContainer/ButtonBook/SellButton" to="." method="_on_SellButton_button_up"]
+[connection signal="button_up" from="MarginContainer/Pages/RightPage_1/RightPageMarginContainer/RightPageContainer/PurchasesContainer/UpgradeContainer/ButtonBook/UpgradeButton" to="." method="_on_UpgradeButton_button_up"]
+[connection signal="button_up" from="CloseButton" to="." method="_on_CloseButton_button_up"]

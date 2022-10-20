@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Art/Book/LeftPage.png" type="Texture" id=1]
+[ext_resource path="res://Art/Book/RightPage.png" type="Texture" id=2]
+[ext_resource path="res://UI/ChoosePlayer/ChoosePlayerUI.gd" type="Script" id=3]
+[ext_resource path="res://Themes/Theme24.tres" type="Theme" id=4]
+[ext_resource path="res://Art/Book/Header_1.png" type="Texture" id=5]
+[ext_resource path="res://UI/ChoosePlayer/CatButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/UIButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/LevelSelector/LevelSelector.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Art/Background.png" type="Texture" id=9]
+[ext_resource path="res://Levels/TutorialLevel/TutorialLevel.tscn" type="PackedScene" id=10]
+
+[node name="ChoosePlayerUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+CatButton = ExtResource( 6 )
+LevelSelector = ExtResource( 8 )
+TutorialLevel = ExtResource( 10 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 957, 291 )
+scale = Vector2( 2.08165, 2.08165 )
+texture = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -448.0
+margin_top = -284.0
+margin_right = 448.0
+margin_bottom = 260.0
+
+[node name="BookContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 896.0
+margin_bottom = 544.0
+custom_constants/separation = 0
+
+[node name="LeftPage" type="TextureRect" parent="MarginContainer/BookContainer"]
+margin_right = 448.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 448, 0 )
+texture = ExtResource( 1 )
+stretch_mode = 5
+
+[node name="LeftMarginContainer" type="MarginContainer" parent="MarginContainer/BookContainer/LeftPage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = -96.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BookContainer/LeftPage/LeftMarginContainer"]
+margin_right = 320.0
+margin_bottom = 384.0
+custom_constants/separation = 0
+
+[node name="CatName" type="Label" parent="MarginContainer/BookContainer/LeftPage/LeftMarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 320.0
+margin_bottom = 22.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CAT NAME"
+align = 1
+uppercase = true
+
+[node name="Header" type="TextureRect" parent="MarginContainer/BookContainer/LeftPage/LeftMarginContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 320.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 48 )
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="AnimatedIcon" type="Control" parent="MarginContainer/BookContainer/LeftPage/LeftMarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 70.0
+margin_right = 320.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="RightPage" type="TextureRect" parent="MarginContainer/BookContainer"]
+margin_left = 448.0
+margin_right = 896.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 448, 0 )
+texture = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="RightMarginContainer" type="MarginContainer" parent="MarginContainer/BookContainer/RightPage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = -96.0
+
+[node name="RightPageContainer" type="VBoxContainer" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer"]
+margin_right = 320.0
+margin_bottom = 384.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer/RightPageContainer"]
+margin_right = 320.0
+margin_bottom = 22.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CHARACTER SELECTION"
+align = 1
+
+[node name="Header" type="TextureRect" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer/RightPageContainer"]
+margin_top = 22.0
+margin_right = 320.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 48 )
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="Divider" type="Control" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer/RightPageContainer"]
+margin_top = 70.0
+margin_right = 320.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="Control" type="Control" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer/RightPageContainer"]
+margin_top = 102.0
+margin_right = 320.0
+margin_bottom = 358.0
+rect_min_size = Vector2( 0, 256 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer/RightPageContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_right = -64.0
+
+[node name="CatChoiceContainer" type="VBoxContainer" parent="MarginContainer/BookContainer/RightPage/RightMarginContainer/RightPageContainer/Control/MarginContainer"]
+unique_name_in_owner = true
+margin_right = 192.0
+margin_bottom = 256.0
+custom_constants/separation = 8
+
+[node name="ConfirmButton" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 1280.0
+margin_top = 800.0
+margin_right = 1472.0
+margin_bottom = 875.0
+
+[node name="Label" parent="ConfirmButton" index="0"]
+theme = ExtResource( 4 )
+text = "CONFIRM"
+
+[connection signal="button_up" from="ConfirmButton" to="." method="_on_ConfirmButton_button_up"]
+
+[editable path="ConfirmButton"]

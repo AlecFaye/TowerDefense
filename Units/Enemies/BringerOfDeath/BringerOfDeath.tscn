@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Units/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Enemies/BringerOfDeath/BringerOfDeath.gd" type="Script" id=2]
+[ext_resource path="res://Units/Enemies/BringerOfDeath/Assets/Bringer-of-Death-SpritSheet.png" type="Texture" id=3]
+[ext_resource path="res://Units/Enemies/BringerOfDeath/Animations/Walk.tres" type="Animation" id=4]
+[ext_resource path="res://Units/Enemies/BringerOfDeath/Animations/Hurt.tres" type="Animation" id=5]
+[ext_resource path="res://Units/Enemies/BringerOfDeath/Animations/Death.tres" type="Animation" id=6]
+[ext_resource path="res://Units/Enemies/BringerOfDeath/Animations/Cast.tres" type="Animation" id=7]
+[ext_resource path="res://Units/Enemies/Cultist/Animations/Idle.tres" type="Animation" id=8]
+[ext_resource path="res://Effects/DarkGrasp/DarkGrasp.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23, 29 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="BringerOfDeath" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 48.0
+gold_dropped = 64
+target_range = 3
+dark_grasp_offset = Vector2( 8, -53 )
+DarkGrasp = ExtResource( 9 )
+shield_amount = 25
+
+[node name="Health" parent="." index="0"]
+max_hp_amount = 96
+
+[node name="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 3 )
+offset = Vector2( 36, -46 )
+flip_h = true
+hframes = 8
+vframes = 8
+frame = 8
+
+[node name="CollisionShape2D" parent="Flip/Sprite/Hurtbox" index="0"]
+position = Vector2( 0, -29 )
+shape = SubResource( 1 )
+
+[node name="AnimationTree" parent="." index="6"]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "Move"
+anims/Cast = ExtResource( 7 )
+anims/Death = ExtResource( 6 )
+anims/Hurt = ExtResource( 5 )
+anims/Idle = ExtResource( 8 )
+anims/Move = ExtResource( 4 )
+
+[node name="HealthBars" parent="." index="8"]
+margin_left = -24.0
+margin_top = -84.0
+margin_right = 24.0
+margin_bottom = -68.0
+
+[node name="PositionTarget" parent="." index="9"]
+position = Vector2( 0, -29 )

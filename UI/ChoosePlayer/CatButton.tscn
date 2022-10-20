@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Themes/Theme16.tres" type="Theme" id=1]
+[ext_resource path="res://UI/UIButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/ChoosePlayer/CatButton.gd" type="Script" id=3]
+
+[node name="CatButton" instance=ExtResource( 2 )]
+margin_right = 128.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+script = ExtResource( 3 )
+
+[node name="Label" parent="." index="0"]
+margin_top = -6.0
+theme = ExtResource( 1 )
+text = "CLEOPATRA"

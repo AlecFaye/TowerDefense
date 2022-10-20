@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Effects/FlaskExplosion/ExplosionRed.gd" type="Script" id=1]
+[ext_resource path="res://Effects/Effect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Effects/FlaskExplosion/Explosion.tres" type="Animation" id=3]
+[ext_resource path="res://Effects/FlaskExplosion/ExplosionRed.png" type="Texture" id=4]
+[ext_resource path="res://Classes/Hitbox.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 22, 11.5 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="ExplosionRed" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+animation_name = "Explosion"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 4 )
+offset = Vector2( 0, -30 )
+hframes = 4
+vframes = 2
+
+[node name="Hitbox" type="Area2D" parent="Sprite" index="0"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox" index="0"]
+position = Vector2( -2, -11.5 )
+shape = SubResource( 3 )
+disabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Explosion"
+anims/Explosion = ExtResource( 3 )
+anims/RESET = SubResource( 2 )

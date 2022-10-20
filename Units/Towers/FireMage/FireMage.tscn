@@ -1,0 +1,30 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Units/Towers/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Units/Towers/FireMage/FireMage.gd" type="Script" id=2]
+[ext_resource path="res://Units/Towers/FireMage/Animations/Casting.tres" type="Animation" id=3]
+[ext_resource path="res://Units/Towers/FireMage/Assets/Idle/Firemage_Idle_0.png" type="Texture" id=4]
+[ext_resource path="res://Units/Towers/FireMage/Animations/Idle.tres" type="Animation" id=8]
+[ext_resource path="res://Projectiles/Fireball/Fireball.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Effects/MeteorShower/MeteorShower.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Effects/FlameVortex/FlameVortex.tscn" type="PackedScene" id=15]
+
+[node name="FireMage" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+unit_type = "FireMage"
+damage_type = 2
+fireball_offset = Vector2( 0, -40 )
+meteor_scale = Vector2( 2, 2 )
+firestorm_loop_count = 1024
+Fireball = ExtResource( 13 )
+MeteorShower = ExtResource( 14 )
+Firestorm = ExtResource( 15 )
+
+[node name="Sprite" parent="Flip" index="0"]
+position = Vector2( 0, -48 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
+anims/Casting = ExtResource( 3 )
+anims/Idle = ExtResource( 8 )

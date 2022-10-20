@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Effects/Effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/ImpactDust/ImpactDust.png" type="Texture" id=2]
+[ext_resource path="res://Effects/ImpactDust/ImpactDust.tres" type="Animation" id=3]
+[ext_resource path="res://Effects/ImpactDust/ImpactDust.gd" type="Script" id=4]
+[ext_resource path="res://Classes/Hitbox.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 22.5, 10 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="ImpactDust" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+animation_name = "ImpactDust"
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -14 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 2
+
+[node name="Hitbox" type="Area2D" parent="Sprite" index="0"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox" index="0"]
+position = Vector2( 2.5, 4 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "ImpactDust"
+anims/ImpactDust = ExtResource( 3 )
+anims/RESET = SubResource( 3 )

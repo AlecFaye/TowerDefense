@@ -1,0 +1,789 @@
+{
+	"Fire Mage": {
+		"Name": "Fire Mage",
+		"FilePath": "FireMage",
+		"BaseCost": 96,
+		"Unlocked": true,
+		"Abilities": [
+			{
+				"Name": "Fireball",
+				"LevelUnlocked": 1,
+				"OnCooldown": false,
+				"AbilityUnlocked": true,
+				"AbilityStats": [
+					{
+						"Damage": 12,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 14,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 16,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 20,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 24,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 28,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 36,
+						"Cooldown": 1.5,
+						"Duration": 15
+					}
+				]
+			},
+			{
+				"Name": "Firestorm",
+				"LevelUnlocked": 4,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+				"AbilityStats": [
+					{
+						"Damage": 32,
+						"Cooldown": 60,
+						"Duration": 60
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 60,
+						"Duration": 60
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 60,
+						"Duration": 60
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 60,
+						"Duration": 60
+					},
+					{
+						"Damage": 36,
+						"Cooldown": 60,
+						"Duration": 60
+					},
+					{
+						"Damage": 40,
+						"Cooldown": 60,
+						"Duration": 60
+					},
+					{
+						"Damage": 48,
+						"Cooldown": 60,
+						"Duration": 60
+					}
+				]
+			},
+			{
+				"Name": "Meteor Shower",
+				"LevelUnlocked": 7,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+				"AbilityStats": [
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 20
+					}
+				]
+			}
+		],
+		"TowerStats": [
+			{
+				"Range": 5,
+				"Sell": 96,
+				"Upgrade": 152
+			},
+			{
+				"Range": 5,
+				"Sell": 186,
+				"Upgrade": 176
+			},
+			{
+				"Range": 5,
+				"Sell": 318,
+				"Upgrade": 200
+			},
+			{
+				"Range": 7,
+				"Sell": 468,
+				"Upgrade": 224
+			},
+			{
+				"Range": 7,
+				"Sell": 636,
+				"Upgrade": 248
+			},
+			{
+				"Range": 7,
+				"Sell": 882,
+				"Upgrade": 272
+			},
+			{
+				"Range": 7,
+				"Sell": 1026,
+				"Upgrade": 296
+			}
+		]
+	},
+	"Mushroom": {
+		"Name": "Mushroom",
+		"FilePath": "Mushroom",
+		"BaseCost": 128,
+		"Unlocked": true,
+		"Abilities": [
+			{
+				"Name": "Poison Gas",
+				"LevelUnlocked": 1,
+				"OnCooldown": false,
+				"AbilityUnlocked": true,
+                "AbilityStats": [
+					{
+						"Damage": 4,
+						"Cooldown": 3
+					},
+					{
+						"Damage": 4,
+						"Cooldown": 3
+					},
+					{
+						"Damage": 4,
+						"Cooldown": 3
+					},
+					{
+						"Damage": 8,
+						"Cooldown": 3
+					},
+					{
+						"Damage": 8,
+						"Cooldown": 3
+					},
+					{
+						"Damage": 8,
+						"Cooldown": 3
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 3
+					}
+				]
+			},
+			{
+				"Name": "Stomp",
+				"LevelUnlocked": 4,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+				"AbilityStats": [
+					{
+						"Damage": 20,
+						"Cooldown": 15
+					},
+					{
+						"Damage": 20,
+						"Cooldown": 15
+					},
+					{
+						"Damage": 20,
+						"Cooldown": 15
+					},
+					{
+						"Damage": 20,
+						"Cooldown": 15
+					},
+					{
+						"Damage": 24,
+						"Cooldown": 15
+					},
+					{
+						"Damage": 28,
+						"Cooldown": 15,
+						"Duration": 15
+					},
+					{
+						"Damage": 36,
+						"Cooldown": 15
+					}
+				]
+			},
+			{
+				"Name": "Feast",
+				"LevelUnlocked": 7,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+                "AbilityStats": [
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					},
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					},
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					},
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					},
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					},
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					},
+					{
+						"Damage": 1,
+						"Cooldown": 180,
+						"Duration": 15
+					}
+				]
+			}
+			
+		],
+		"TowerStats": [
+			{
+				"Range": 3,
+				"Sell": 128,
+				"Upgrade": 184
+			},
+			{
+				"Range": 3,
+				"Sell": 234,
+				"Upgrade": 208
+			},
+			{
+				"Range": 3,
+				"Sell": 390,
+				"Upgrade": 232
+			},
+			{
+				"Range": 3,
+				"Sell": 564,
+				"Upgrade": 256
+			},
+			{
+				"Range": 3,
+				"Sell": 756,
+				"Upgrade": 280
+			},
+			{
+				"Range": 3,
+				"Sell": 966,
+				"Upgrade": 304
+			},
+			{
+				"Range": 3,
+				"Sell": 1194,
+				"Upgrade": 328
+			}
+		]
+	},
+	"Priest": {
+		"Name": "Priest",
+		"FilePath": "Priest",
+		"BaseCost": 100,
+		"Unlocked": true,
+		"Abilities": [
+			{
+				"Name": "Divine Slow",
+				"LevelUnlocked": 1,
+				"OnCooldown": false,
+				"AbilityUnlocked": true,
+                "AbilityStats": [
+					{
+						"SlowAmount": 15,
+						"Cooldown": 5
+					},
+					{
+						"SlowAmount": 15,
+						"Cooldown": 5
+					},
+					{
+						"SlowAmount": 15,
+						"Cooldown": 5
+					},
+					{
+						"SlowAmount": 20,
+						"Cooldown": 5
+					},
+					{
+						"SlowAmount": 20,
+						"Cooldown": 5
+					},
+					{
+						"SlowAmount": 20,
+						"Cooldown": 5
+					},
+					{
+						"SlowAmount": 30,
+						"Cooldown": 5
+					}
+				]
+			},
+			{
+				"Name": "Judgement",
+				"LevelUnlocked": 7,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+                "AbilityStats": [
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					},
+					{
+						"Damage": 32,
+						"Cooldown": 240,
+						"Duration": 30
+					}
+				]
+			}
+		],
+		"TowerStats": [
+			{
+				"Range": 5,
+				"Sell": 200,
+				"Upgrade": 240
+			},
+			{
+				"Range": 5,
+				"Sell": 330,
+				"Upgrade": 280
+			},
+			{
+				"Range": 5,
+				"Sell": 540,
+				"Upgrade": 320
+			},
+			{
+				"Range": 5,
+				"Sell": 780,
+				"Upgrade": 360
+			},
+			{
+				"Range": 5,
+				"Sell": 1050,
+				"Upgrade": 400
+			},
+			{
+				"Range": 5,
+				"Sell": 1350,
+				"Upgrade": 440
+			},
+			{
+				"Range": 5,
+				"Sell": 1680,
+				"Upgrade": 480
+			}
+		]
+	},
+	"Rogue": {
+		"Name": "Rogue",
+		"FilePath": "Rogue",
+		"BaseCost": 160,
+		"Unlocked": true,
+		"Abilities": [
+			{
+				"Name": "Twin Attack",
+				"LevelUnlocked": 1,
+				"OnCooldown": false,
+				"AbilityUnlocked": true,
+                "AbilityStats": [
+					{
+						"Damage": 12,
+						"Cooldown": 2.5
+					},
+					{
+						"Damage": 14,
+						"Cooldown": 2.5
+					},
+					{
+						"Damage": 16,
+						"Cooldown": 2.5
+					},
+					{
+						"Damage": 20,
+						"Cooldown": 2
+					},
+					{
+						"Damage": 24,
+						"Cooldown": 2
+					},
+					{
+						"Damage": 28,
+						"Cooldown": 2
+					},
+					{
+						"Damage": 40,
+						"Cooldown": 1.5
+					}
+				]
+			},
+			{
+				"Name": "Unending Shuriken",
+				"LevelUnlocked": 4,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+                "AbilityStats": [
+					{
+						"Damage": 12,
+						"Cooldown": 32,
+						"Duration": 16
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 32,
+						"Duration": 16
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 32,
+						"Duration": 16
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 32,
+						"Duration": 16
+					},
+					{
+						"Damage": 16,
+						"Cooldown": 32,
+						"Duration": 16
+					},
+					{
+						"Damage": 20,
+						"Cooldown": 32,
+						"Duration": 16
+					},
+					{
+						"Damage": 28,
+						"Cooldown": 32,
+						"Duration": 16
+					}
+				]
+			},
+			{
+				"Name": "Assassinate",
+				"LevelUnlocked": 7,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+                "AbilityStats": [
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					},
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					},
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					},
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					},
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					},
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					},
+					{
+						"Damage": 80,
+						"Cooldown": 120
+					}
+				]
+			}
+		],
+		"TowerStats": [
+			{
+				"Range": 5,
+				"Sell": 160,
+				"Upgrade": 192
+			},
+			{
+				"Range": 5,
+				"Sell": 264,
+				"Upgrade": 224
+			},
+			{
+				"Range": 5,
+				"Sell": 432,
+				"Upgrade": 256
+			},
+			{
+				"Range": 5,
+				"Sell": 624,
+				"Upgrade": 288
+			},
+			{
+				"Range": 7,
+				"Sell": 840,
+				"Upgrade": 320
+			},
+			{
+				"Range": 7,
+				"Sell": 1080,
+				"Upgrade": 352
+			},
+			{
+				"Range": 7,
+				"Sell": 1344,
+				"Upgrade": 384
+			}
+		]
+	},
+	"Alchemist": {
+		"Name": "Alchemist",
+		"FilePath": "Alchemist",
+		"BaseCost": 100,
+		"Unlocked": true,
+		"Abilities": [
+			{
+				"Name": "Type I Flask",
+				"LevelUnlocked": 1,
+				"OnCooldown": false,
+				"AbilityUnlocked": true,
+                "AbilityStats": [
+					{
+						"Damage": 10,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 11,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 13,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 14,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 15,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 16,
+						"Cooldown": 1.5,
+						"Duration": 15
+					}
+				]
+			},
+			{
+				"Name": "Type II Flask",
+				"LevelUnlocked": 4,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+                "AbilityStats": [
+					{
+						"Damage": 10,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 11,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 13,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 14,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 15,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 16,
+						"Cooldown": 1.5,
+						"Duration": 15
+					}
+				]
+			},
+			{
+				"Name": "Type III Flask",
+				"LevelUnlocked": 7,
+				"OnCooldown": false,
+				"AbilityUnlocked": false,
+                "AbilityStats": [
+					{
+						"Damage": 10,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 11,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 12,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 13,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 14,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 15,
+						"Cooldown": 1.5,
+						"Duration": 15
+					},
+					{
+						"Damage": 16,
+						"Cooldown": 1.5,
+						"Duration": 15
+					}
+				]
+			}
+		],
+		"TowerStats": [
+			{
+				"Range": 5,
+				"Sell": 100,
+				"Upgrade": 250
+			},
+			{
+				"Range": 5,
+				"Sell": 175,
+				"Upgrade": 325
+			},
+			{
+				"Range": 6,
+				"Sell": 300,
+				"Upgrade": 450
+			},
+			{
+				"Range": 6,
+				"Sell": 350,
+				"Upgrade": 575
+			},
+			{
+				"Range": 7,
+				"Sell": 375,
+				"Upgrade": 675
+			},
+			{
+				"Range": 7,
+				"Sell": 400,
+				"Upgrade": 800
+			},
+			{
+				"Range": 7,
+				"Sell": 450,
+				"Upgrade": 1000
+			}
+		]
+	}
+}

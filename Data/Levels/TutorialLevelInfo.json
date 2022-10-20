@@ -1,0 +1,35 @@
+{
+	"Tutorial Level": {
+		"FilePath": "TutorialLevel",
+		"Name": "Tutorial Level",
+		"LevelUnlocked": true,
+		"LevelCompleted": false,
+		"Waves": {
+			"Wave 1": [
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 20.0]
+			],
+			"Wave 2": [
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 0.5],
+                ["Zombie", 0, 0.5],
+				["Zombie", 0, 20.0]
+			],
+			"Wave 3": [
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 2.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 2.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 2.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 0.5],
+				["Zombie", 0, 20.0]
+			]
+		}
+	}
+}

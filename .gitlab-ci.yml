@@ -1,0 +1,66 @@
+image: barichello/godot-ci:3.3.2
+
+variables:
+  EXPORT_NAME: default_project
+  ITCHIO_NAME: alecfaye/defaultproject
+
+stages:
+  - export
+  - deploy
+
+windows:
+  stage: export
+  script:
+    - mkdir -v -p Builds/windows
+    - godot -v --export "Windows Desktop" ./Builds/windows/$EXPORT_NAME.exe
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - Builds/windows
+
+macosx:
+  stage: export
+  script:
+    - mkdir -v -p Builds/macosx
+    - godot -v --export "Mac OSX" ./Builds/macosx/$EXPORT_NAME.zip
+    - (cd ./Builds/macosx && unzip -a $EXPORT_NAME.zip && rm $EXPORT_NAME.zip)
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - Builds/macosx
+
+web:
+  stage: export
+  script:
+    - mkdir -v -p Builds/web
+    - godot -v --export "HTML5" ./Builds/web/index.html
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - Builds/web
+
+pages:
+  stage: deploy
+  dependencies:
+    - web
+  script:
+    - rm -rf public
+    - cp -r Builds/web public
+  artifacts:
+    paths:
+      - public
+  only:
+   - develop
+
+itch:
+  stage: deploy
+  dependencies:
+    - web
+    - macosx
+    - windows
+  script:
+    - butler push Builds/web $ITCHIO_NAME:web-stable
+    - butler push Builds/macosx $ITCHIO_NAME:macosx-stable
+    - butler push Builds/windows $ITCHIO_NAME:windows-stable
+  only:
+   - main

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Interactables/Coin/Coin.tscn" type="PackedScene" id=1]
+
+[node name="GoldCoin" instance=ExtResource( 1 )]
+gold_amount = 50
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "GoldSpin"

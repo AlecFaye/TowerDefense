@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/Paths/tile_hovered.png" type="Texture" id=1]
+
+[node name="HoveredTile" type="Sprite"]
+modulate = Color( 0.854902, 0.854902, 0.854902, 1 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -11 )
